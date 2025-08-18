@@ -28,7 +28,7 @@ class User extends Authenticatable implements JWTSubject
      * The attributes that should be hidden for serialization.
      *
      * @var list<string>
-     */
+     */ 
     protected $hidden = [
         'password',
         'remember_token',

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <h1>Iniciar sesión</h1>
@@ -6,7 +6,7 @@
         @csrf
         <input type="email" name="email" placeholder="Email" required><br>
         <input type="password" name="password" placeholder="Contraseña" required><br>
-        <button type="submit">Entrar</button>
+        <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
     @if($errors->any())
         <div class="alert alert-danger">

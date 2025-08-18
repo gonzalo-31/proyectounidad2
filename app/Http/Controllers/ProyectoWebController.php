@@ -1,9 +1,14 @@
 <?php
 
+
+
+
 namespace App\Http\Controllers;
+
 
 use Illuminate\Http\Request;
 use App\Models\Proyecto;
+use App\Helpers\UfHelper;
 class ProyectoWebController extends Controller
 {
   
@@ -15,7 +20,8 @@ class ProyectoWebController extends Controller
         public function index()
         {
             $proyectos = Proyecto::all();
-            return view('proyectos.index', compact('proyectos'));
+            $uf = UfHelper::getUf();
+            return view('proyectos.index', compact('proyectos', 'uf'));
         }
 
        
@@ -35,7 +41,16 @@ class ProyectoWebController extends Controller
                 'monto' => 'required|numeric',
             ]);
             $validated['created_by'] = auth()->id();
-            Proyecto::create($validated);
+            $proyecto = Proyecto::create([
+                'nombre' => $request->nombre,
+                'descripcion' => $request->descripcion,
+                'fecha_inicio' => $request->fecha_inicio,
+                'fecha_fin' => $request->fecha_fin,
+                'estado' => $request->estado,
+                'responsable' => $request->responsable,
+                'monto' => $request->monto,
+                'created_by' => auth()->id() 
+            ]);
             return redirect()->route('proyectos.index')->with('success', 'Proyecto creado correctamente');
         }
 
@@ -75,4 +90,5 @@ class ProyectoWebController extends Controller
             $proyecto->delete();
             return redirect()->route('proyectos.index')->with('success', 'Proyecto eliminado correctamente');
         }
+
 }

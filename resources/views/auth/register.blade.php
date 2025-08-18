@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <h1>Registro de usuario</h1>
@@ -8,7 +8,7 @@
         <input type="email" name="email" placeholder="Email" required><br>
         <input type="password" name="password" placeholder="Contraseña" required><br>
         <input type="password" name="password_confirmation" placeholder="Confirmar contraseña" required><br>
-        <button type="submit">Registrarse</button>
+        <button type="submit" class="btn btn-success">Registrarse</button>
     </form>
     @if($errors->any())
         <div class="alert alert-danger">

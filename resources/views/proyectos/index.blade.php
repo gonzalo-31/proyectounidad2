@@ -6,6 +6,9 @@
         <p>Bienvenido, {{ Auth::user()->name }}</p>
     @endauth
     <a href="{{ route('proyectos.create') }}" class="btn btn-success mb-3">Crear nuevo proyecto</a>
+    <div class="alert alert-info mb-3">
+        <strong>UF diaria:</strong> {{ $uf ?? 'No disponible' }}
+    </div>
     <ul>
         @foreach($proyectos as $proyecto)
             <li class="mb-4 p-3 border rounded">
