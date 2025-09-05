@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Proyecto extends Model
 {
@@ -22,5 +23,11 @@ class Proyecto extends Model
     public function creadopor()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'proyectos_user', 'proyecto_id', 'user_id')
+            ->withTimestamps();
     }
 }

@@ -12,9 +12,6 @@ Route::middleware(['guest'])->group(function () {
 
 
 Route::middleware(['auth:api'])->group(function () {
-    Route::post('/proyectos', [ProyectoController::class, 'store']);
-    Route::put('/proyectos/{id}', [ProyectoController::class, 'update']);
-    Route::delete('/proyectos/{id}', [ProyectoController::class, 'destroy']);
-    Route::get('/proyectos', [ProyectoController::class, 'index']);
-    Route::get('/proyectos/{id}', [ProyectoController::class, 'show']);
+    Route::apiResource('proyectos', ProyectoController::class);
+
 });

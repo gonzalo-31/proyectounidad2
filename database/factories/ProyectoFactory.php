@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace Database\Factories;
 
 use App\Models\Proyecto;
@@ -21,3 +21,4 @@ class ProyectoFactory extends Factory
         ];
     }
 }
+*/
